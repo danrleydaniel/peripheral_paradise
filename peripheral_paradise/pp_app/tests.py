@@ -11,7 +11,7 @@ class ProdutoTestes(TestCase):
 	def setUp(self):
 		self.client = APIClient()
 		self.produto_data = {'nome':'Teste', 'preco': 40.00, 'descricao': 'Realizando teste de unidade', 'codigo':'1234567890', 'marca':'tester'}
-		self.response = self.cliente.post(reverse('produto-lista'), self.produto_data, format='json')
+		self.response = self.client.post(reverse('produto-lista'), self.produto_data, format='json')
 
 	def teste_criar_produto(self):
 		self.assertEqual(self.response.status_code, status.HTTP_201_CREATED)
@@ -27,12 +27,13 @@ class ProdutoTestes(TestCase):
 		produto = Produto.objects.get()
 		novos_dados = {'nome':'Novo Nome', 'preco':15.00, 'descricao':'Testando a edição do produto', 'codigo':'0987654321', 'marca':'Marca Nova'}
 		response = self.client.put(reverse('produto-detalhe', kwargs={'pk':produto.id}), novos_dados, format='json')
-		self.assertEqual(responde.status_code, status.HTTP_200_OK)
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 	def teste_deletar_produto(self):
 		produto = Produto.objects.get()
-		responde = self.client.delete(reverse('produto-detalhe', kwargs={'pk':produto.id}))
+		response = self.client.delete(reverse('produto-detalhe', kwargs={'pk':produto.id}))
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
 
 class UsuarioTestes(TestCase):
 	def setUp(self):
@@ -45,7 +46,7 @@ class UsuarioTestes(TestCase):
 
 	def teste_listar_usuario(self):
 		usuario = Usuario.objects.get()
-		responde = self.client.get(reverse('usuario-detalhe', kwargs={'pk': usuario.id}), format='json')
+		response = self.client.get(reverse('usuario-detalhe', kwargs={'pk': usuario.id}), format='json')
 		serializer = UsuarioSerializer(usuario)
 		self.assertEqual(response.data, serializer.data)
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -58,6 +59,5 @@ class UsuarioTestes(TestCase):
 
 	def teste_deletar_usuario(self):
 		usuario = Usuario.objects.get()
-		response = self.client.delete(reverse('produto-detalhe', kwargs={'pk':usuario.id}))
+		response = self.client.delete(reverse('usuario-detalhe', kwargs={'pk':usuario.id}))
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
