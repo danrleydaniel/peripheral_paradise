@@ -1,0 +1,9 @@
+[run]
+source = .
+omit =
+	*/migrations/*
+	*/tests/*
+	manage.py
+	peripheral_paradise/asgi.py
+	peripheral_paradise/wsgi.py
+	peripheral_paradise/settings.py
