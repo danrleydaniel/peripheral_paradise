@@ -26,6 +26,9 @@
 | ----------- | --------- |
 | **Código**      | **Descrição** |
 | **TA01.01** | Testar a eficácia e eficiência da funcionalidade de inserção dos dados por meio do uso da GUI do app |
+| **TA01.02** | Testar a eficácia e eficiência da funcionalidade de edição dos dados por meio do uso da GUI do app   |
+| **TA01.03** | Testar a eficácia e eficiência da funcionalidade de exclusão dos dados por meio do uso da GUI do app |
+| **TA01.04** | Testar a eficácia e eficiência da funcionalidade de listagem dos dados por meio do uso da GUI do app |
 
 ## User story US02 - Manter Usuário
 
@@ -52,4 +55,34 @@
 | Testes de Aceitação (TA) |  |
 | ----------- | --------- |
 | **Código**      | **Descrição** |
-| **TA01.01** | Verificar se a GUI, os menus e a navegabilidade do app está satisfatória por meio de uma pesquisa informal das opiniões dos usuários |
+| **TA02.01** | Testar a eficácia e eficiência da funcionalidade de inserção dos dados por meio do uso da GUI do app |
+| **TA02.02** | Testar a eficácia e eficiência da funcionalidade de edição dos dados por meio do uso da GUI do app   |
+| **TA02.03** | Testar a eficácia e eficiência da funcionalidade de exclusão dos dados por meio do uso da GUI do app |
+| **TA02.04** | Testar a eficácia e eficiência da funcionalidade de listagem dos dados por meio do uso da GUI do app |
+
+
+## User story US03 - Manter Compras
+
+|               |                                                                |
+| ------------- | :------------------------------------------------------------- |
+| **Descrição** | O cliente poderá realizar suas compras |
+
+**Requisitos envolvidos** |                                                    |
+| ------------- | :------------------------------------------------------------- |
+| RF05           | Realizar compra     |
+| RF06           | Listar compras      |
+
+|                           |                                     |
+| ------------------------- | ----------------------------------- | 
+| **Prioridade**            | Essencial                           | 
+| **Estimativa**            | 8 h                                 | 
+| **Tempo Gasto (real):**   |     x                               | 
+| **Tamanho Funcional**     | X PF                                | 
+| **Desenvolvedor**         | Maicon                              | 
+
+
+| Testes de Aceitação (TA) |  |
+| ----------- | --------- |
+| **Código**      | **Descrição** |
+| **TA03.01** | Testar a eficácia e eficiência da funcionalidade de inserção dos dados por meio do uso da GUI do app |
+| **TA03.02** | Testar a eficácia e eficiência da funcionalidade de listagem dos dados por meio do uso da GUI do app |
