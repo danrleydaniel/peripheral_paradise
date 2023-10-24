@@ -2,8 +2,8 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
-from .models import Produto, Usuario
-from .serializers import ProdutoSerializer, UsuarioSerializer
+from .models import Produto, Usuario, Compra
+from .serializers import ProdutoSerializer, UsuarioSerializer, CompraSerializer
 
 # Create your tests here.
 
@@ -61,3 +61,14 @@ class UsuarioTestes(TestCase):
 		usuario = Usuario.objects.get()
 		response = self.client.delete(reverse('usuario-detalhe', kwargs={'pk':usuario.id}))
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+class CompraTestes(TestCase):
+	def setUp(self):
+		self.client = APIClient()
+
+	def test_criar_compras(self):
+		usuario = Usuario.objects.create(nome='Teste', email='teste@teste.com', senha='teste123')
+		produto = Produto.objects.create(nome='Produto Teste', preco=14.00, descricao="Descrição de teste", codigo='12345', marca='Tester')
+		data = {'usuario':usuario.id , 'produto':produto.id}
+		response = self.client.post(reverse('compra-lista'), data, format='json')
+		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
