@@ -10,7 +10,7 @@ class Produto(models.Model):
 	marca = models.CharField(max_length=30)
 
 	def __str__(self):
-		return [self.nome, self.preco, self.descricao, self.codigo, self.marca]
+		return str([self.nome, self.preco, self.descricao, self.codigo, self.marca])
 
 class Usuario(models.Model):
     nome = models.CharField(max_length=100)
