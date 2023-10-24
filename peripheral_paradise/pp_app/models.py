@@ -19,3 +19,11 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Compra(models.Model):
+	usuario = models.ForeignKey('Usuario',on_delete=models.CASCADE)
+	produto = models.ForeignKey('Produto',on_delete=models.CASCADE)
+	data_compra = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return f'{self.usuario} comprou {self.produto} em {self.data_compra}'
