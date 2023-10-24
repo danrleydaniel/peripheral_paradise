@@ -65,10 +65,28 @@ class UsuarioTestes(TestCase):
 class CompraTestes(TestCase):
 	def setUp(self):
 		self.client = APIClient()
+		self.usuario = Usuario.objects.create(nome='Teste', email='teste@teste.com', senha='teste123')
+		self.produto = Produto.objects.create(nome='Produto Teste', preco=14.00, descricao="Descrição de teste", codigo='12345', marca='Tester')
+		self.data = {'usuario':self.usuario.id , 'produto':self.produto.id}
 
 	def test_criar_compras(self):
-		usuario = Usuario.objects.create(nome='Teste', email='teste@teste.com', senha='teste123')
-		produto = Produto.objects.create(nome='Produto Teste', preco=14.00, descricao="Descrição de teste", codigo='12345', marca='Tester')
-		data = {'usuario':usuario.id , 'produto':produto.id}
-		response = self.client.post(reverse('compra-lista'), data, format='json')
+		response = self.client.post(reverse('compra-lista'), self.data, format='json')
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+	def test_listar_compras(self):
+		compra = Compra.objects.create(usuario=self.usuario, produto=self.produto)
+		response = self.client.get(reverse('compra-detalhe', kwargs={'pk':compra.id}), format='json')
+		serializer = CompraSerializer(compra)
+		self.assertEqual(response.data, serializer.data)
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+	def teste_editar_compras(self):
+		compra = Compra.objects.create(usuario=self.usuario, produto=self.produto)
+		novos_dados = {'usuario':self.usuario.id, 'produto':self.produto.id}
+		response = self.client.put(reverse('compra-detalhe', kwargs={'pk':compra.id}), novos_dados, format='json')
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+	def teste_deletar_compra(self):
+		compra = Compra.objects.create(usuario=self.usuario, produto=self.produto)
+		response = self.client.delete(reverse('usuario-detalhe', kwargs={'pk':compra.id}), format='json')
+		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
