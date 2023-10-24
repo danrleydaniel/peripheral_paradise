@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Produto, Usuario
-from .serializers import ProdutoSerializer, UsuarioSerializer
+from .models import Produto, Usuario, Compra
+from .serializers import ProdutoSerializer, UsuarioSerializer, CompraSerializer
 
 # Create your views here.
 
@@ -19,3 +19,11 @@ class UsuarioLista(generics.ListCreateAPIView):
 class UsuarioDetalhe(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Usuario.objects.all()
 	serializer_class = UsuarioSerializer
+
+class CompraLista(generics.ListCreateAPIView):
+	queryset = Compra.objects.all()
+	serializer_class = CompraSerializer
+
+class CompraDetalhe(generics.RetrieveUpdateDestroyAPIView):
+	queryset = Compra.objects.all()
+	serializer_class = CompraSerializer
