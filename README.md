@@ -10,3 +10,6 @@ Projeto para a disciplina de Testes de Software
 - [Plano de testes](https://github.com/danrleydaniel/peripheral_paradise/blob/main/docs/plano_de_testes.md)
 - [Plano de releases e iterações](https://github.com/danrleydaniel/peripheral_paradise/blob/main/docs/plano_releases_iteracoes.md)
 - [User stories](https://github.com/danrleydaniel/peripheral_paradise/blob/main/docs/user_stories.md)
+
+## Teste de mutação
+O teste de mutação foi realizado com a ferramenta MutPy.
